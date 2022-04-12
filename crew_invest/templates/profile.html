@@ -1,0 +1,53 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %}Личный кабинет{% endblock title %}
+
+{% block content %}
+<div class="row">
+<div class="col-4">
+<div class="main-profile">
+    <img src="{{ request.user.profile.avatar.url }}">
+    <div class="profile-info">
+        <p class="profile-name">
+        {{ request.user.first_name }} {{ request.user.last_name }}
+        </p>
+        <p class="info">
+            @{{ request.user.username }}
+        </p>
+        <p>
+        <a class="btn update-profile" href="#" role="button">Редактировать</a>
+        </p>
+        
+    </div>
+</div>
+</div>
+<div class="col-8">
+<div class="balance">
+   <p> Баланс: {{ request.user.profile.balance }} <a class="balance-btn btn" href="#" role="button">+</a></p>
+</div>
+<div class="stocks">
+    <table class="table">
+        <thead class="thead-stocks">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Актуальная стоимость</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stock in stocks %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.amount }}</td>
+            <td>-</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+</div>
+</div>
+{% endblock content %}

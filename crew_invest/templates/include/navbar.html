@@ -1,0 +1,28 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-expand-md navbar-color fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand web-name" href="{% url 'main' %}">Crew Invest</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if request.user.is_authenticated %}
+      <div class = "nav-img"><img src="{{ request.user.profile.avatar.url }}"></div>
+      <div class="pf-name">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+      <div class="link-2">
+        <a href="">Личный кабинет</a>
+      </div>
+      <div class="link-2">
+        <a href="">Выйти</a>
+      </div>
+      {% else %}
+      <div class="link-1">
+        <a href="">Регистрация</a>
+      </div>
+      <div class="link-2">
+        <a href="">Войти</a>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+</header>

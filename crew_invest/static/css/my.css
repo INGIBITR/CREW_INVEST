@@ -1,0 +1,138 @@
+main {
+    margin-top: 5%;
+}
+
+.container {
+    width: 100%;
+    margin-left: 2%;
+    padding-left: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.navbar-color{
+    background-color: #5d2e46;
+}
+
+.navbar a{
+    color: #B7B5E4;
+}
+
+.web-name {
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.pf-name{
+    color:#B7B5E4;
+    padding:10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-img {
+    margin-left: auto;
+}
+
+.nav-img > img{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid #B7B5E4;
+}
+
+.profile-info {
+    padding: 5%;
+    margin-top: 5%;
+
+}
+
+.profile-name {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #5d2e46;
+}
+
+.update-profile {
+    border-radius: 26px;
+    background-color: #5d2e46;
+    color: #B7B5E4;
+    font-weight: bolder;
+    padding: 5%;
+    font-size: 20px;
+
+}
+.balance-btn {
+    border-radius: 50%;
+    background-color: #b7b5e481;
+    color: #5d2e46;
+    font-weight: bolder;
+    font-size: 20px;
+
+}
+.balance-btn:hover {
+    color: gray;
+}
+ .update-profile:hover {
+    color: gray;
+}
+
+.stocks {
+    font-size: 25px;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
+.stocks table {
+    color: #5d2e46;
+    text-align: center;
+}
+
+.thead-stocks {
+    background-color: #b7b5e481;
+}
+
+.balance {
+    color: #5d2e46;
+    font-weight: bolder;
+    font-size: 25px;
+    padding-top: 5%;
+    margin-right: auto;
+}
+.profile-info .info {
+    font-size: 25px;
+    color: #5d2e46;
+    text-align: center;
+}
+.main-profile > img{
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    border: 2px solid #B7B5E4;
+    margin-top: 5%;
+}
+.main-profile {
+    text-align: center;
+    background-color: #b7b5e481;
+    border-radius: 16px;
+    padding: 2%;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-right: 20%;
+}
+
+.navbar .link-1{
+    margin-left: auto;
+    padding-right: 1%;
+    padding-left: 1%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .link-2{
+    padding-right: 1%;
+    padding-left: 1%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
