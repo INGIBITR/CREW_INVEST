@@ -1,0 +1,35 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %}Пополнение баланса{% endblock title %}
+
+{% block content %}
+<div class="payment">
+<form action="/pay/" method="post">
+    {% csrf_token %}
+    <h5 class="payment-title">Пополнение баланса</h5>
+        {% if form.errors %}
+        <div class="error">
+            Некорректные данные
+        </div>
+        {% endif %}
+    <div class="form-group">
+        <label for="sum">Сумма</label>
+        <input type="number" class="form-control {% if form.errors.sum %} is-invalid {% endif %}" name="sum" id="sum" placeholder="1000">
+      </div>
+    <div class="form-group">
+      <label for="card-number">Номер карты</label>
+      <input type="text" class="form-control {% if form.errors.card_number %} is-invalid {% endif %}" name="card_number" id="card-number" placeholder="**** **** **** ****">
+    </div>
+    <div class="input-group card-info">
+          <label for="date">Дата</label>
+          <input type="text" class="form-control {% if form.errors.date %} is-invalid {% endif %}" name="date" id="date" placeholder="MM/YY" >
+          <label for="CVC">CVC</label>
+          <input type="password" class="form-control {% if form.errors.cvc %} is-invalid {% endif %}" name="cvc" id="cvc" placeholder="***">
+      </div>
+      <div class="card-btn">
+    <button type="submit" class="btn update-profile">Подтвердить</button>
+</div>
+  </form>
+</div>
+{% endblock content %}

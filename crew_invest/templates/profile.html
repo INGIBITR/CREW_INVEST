@@ -24,7 +24,7 @@
 </div>
 <div class="col-8">
 <div class="balance">
-   <p> Баланс: {{ request.user.profile.balance }} <a class="balance-btn btn" href="#" role="button">+</a></p>
+   <p> Баланс: {{ request.user.profile.balance }} <a class="balance-btn btn" href="{% url 'payment' %}" role="button">+</a></p>
 </div>
 <div class="stocks">
     <table class="table">

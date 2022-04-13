@@ -58,10 +58,12 @@ main {
     background-color: #5d2e46;
     color: #B7B5E4;
     font-weight: bolder;
-    padding: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
     font-size: 20px;
 
 }
+
 .balance-btn {
     border-radius: 50%;
     background-color: #b7b5e481;
@@ -134,5 +136,67 @@ main {
     padding-left: 1%;
     font-size: 20px;
     font-weight: bold;
+}
+
+.payment {
+    width:max-content;
+    background-color: #B7B5E4;
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 4%;
+    padding-left: 4%;
+    border-radius: 10px;
+    color: #5d2e46;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#cvc {
+    width: 4rem;
+    font-size: 18px;
+    border-radius: .25rem;
+    margin-left:auto;
+}
+
+#date {
+    width: 8rem;
+    font-size: 18px;
+    border-radius: .25rem;
+    margin-left: 2%;
+    margin-right: 5%;
+}
+
+.payment-title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5%;
+}
+#card-number {
+    width: 25rem;
+    font-size: 18px;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+.card-info label {
+    padding-right:4%;
+}
+
+.card-info {
+    margin-top: 6%;
+}
+
+.card-btn {
+    text-align: center;
+    margin-top: 10%;
+}
+
+
+.error {
+    font-weight: 200;
+    color: red;
+    text-align: center;
 }
 
