@@ -200,8 +200,13 @@ main {
     text-align: center;
 }
 
-.graph {
-    height: 200px;
-    width: 50%;
+.graph div{
+    height: 75%;
    
+   
+}
+.graph  {
+    height: 100%;
+
+
 }

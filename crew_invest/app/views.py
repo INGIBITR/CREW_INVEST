@@ -96,6 +96,7 @@ def outputFig(ticker):
         yaxis_title='{} Stock'.format(ticker),
 
 
+
     )
     return fig
 
@@ -116,11 +117,7 @@ def stockpage(request, str):
 
     dcc.Graph(
         id='example-graph',
-        figure=fig
-    )
-])
+        figure=fig)])
     output = plot.to_html(fig, include_plotlyjs = True, full_html = False)
   
     return render(request, 'stockpage.html', {'chart': output  })
-
-   
