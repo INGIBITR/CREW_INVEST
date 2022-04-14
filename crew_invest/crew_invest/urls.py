@@ -26,6 +26,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('payment/', views.payment, name='payment'),
     path('pay/', views.pay, name='pay'),
+    path('stockpage/<str>/', views.stockpage, name='stockpage'),
 
     path('', views.main, name='main')
 ]
