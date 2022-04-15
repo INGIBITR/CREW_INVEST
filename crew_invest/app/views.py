@@ -72,14 +72,15 @@ def edit(request):
         user = request.user
         profile = request.user.profile 
         form = UserEdit(request.POST,request.FILES)
-        user.profile.avatar=form.instance
         if form.is_valid():
             user.username=request.POST.__getitem__('username')
             user.email=request.POST.__getitem__('email')
             user.first_name=request.POST.__getitem__('first_name')
             user.last_name=request.POST.__getitem__('last_name')
             profile = Profile.objects.get(pk=user.profile.id)
-            profile.avatar=form.cleaned_data.get('avatar_field')
+            
+            if form.cleaned_data.get('avatar_field')!=None:
+                profile.avatar=form.cleaned_data.get('avatar_field')
             profile.save()
             user.save()
             return redirect('profile')
