@@ -67,4 +67,5 @@ class PurchaseForm(forms.Form):
             self._errors["stock_quantity"] = ["Некорректное количество"]
             return form_data
 
+
         return form_data

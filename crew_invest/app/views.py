@@ -126,10 +126,26 @@ def stockpage(request, str):
     form = PurchaseForm(request.POST)
     if form.is_valid():
         profile = request.user.profile
-        profile.balance -= form.cleaned_data['stock_quantity'] * lastprice
-        profile.
-        profile.save()
-        return redirect('profile')
+        stock = Stock()
+        if profile.balance < (form.cleaned_data['stock_quantity'] * lastprice):
+            form.errors["stock_quantity"] = ""
+            print(form.errors)
+            return render(request, 'stockpage.html', {'form': form, 'chart': output, 'lastprice': lastprice})
+        else:
+            profile.balance -= form.cleaned_data['stock_quantity'] * lastprice
+            stock.owner = request.user.profile
+            stockToFind = Stock.objects.filter(name=str, owner_id = profile.id).first()
+            if stockToFind:
+                stockToFind.amount += form.cleaned_data['stock_quantity']
+                stockToFind.save()
+            else:
+                stock.name = str
+                stock.price = lastprice
+                stock.amount += form.cleaned_data['stock_quantity']
+                stock.save()
+            profile.save()
+            
+            return redirect('profile')
     else:
         print(form.errors)
         return render(request, 'stockpage.html', {'form': form, 'chart': output, 'lastprice': lastprice})
