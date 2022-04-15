@@ -32,6 +32,7 @@ urlpatterns = [
     path('logout_view/',views.logout_view, name='logout_view'),
     path('profile/edit/',views.edit,name='edit'),
     path('', views.main, name='main'),
+    path('stockpage/<str>/', views.stockpage, name='stockpage'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

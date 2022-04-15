@@ -12,3 +12,11 @@ class Stock(models.Model):
     name = models.CharField(max_length=255)
     amount = models.IntegerField(default=1)
     owner = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='stocks')
+
+
+class StockPage(models.Model):
+    ticker = models.CharField(max_length=255)
+    price = models.IntegerField()
+    pricechange = models.IntegerField()
+    
+

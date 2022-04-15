@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
+
+
 class PaymentForm(forms.Form):
     card_number = forms.CharField()
     date = forms.CharField()

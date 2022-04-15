@@ -244,3 +244,8 @@ flex-direction:column;
     text-align: center;
 }
 
+.graph {
+    height: 200px;
+    width: 50%;
+   
+}
