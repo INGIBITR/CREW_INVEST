@@ -85,6 +85,10 @@ main {
     padding-top: 2%;
 }
 
+.mainpage {
+    margin-left: 4%;
+}
+
 .stocks table {
     color: #5d2e46;
     text-align: center;

@@ -13,7 +13,9 @@ def profile(request):
     return render(request, 'profile.html', {'stocks': stocks})
 
 def main(request):
-    return render(request, 'main.html')
+
+    url = 'https://cloud.iexapis.com/stable/tops?token=sk_4d09ca49f6414e649ec494e14f079795&symbols=aapl,fb'
+    return render(request, 'main.html', {'url': url})
 
 #@login_required
 def payment(request):

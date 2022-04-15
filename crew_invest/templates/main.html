@@ -2,7 +2,40 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block title %}Главная{% endblock title %}
-
 {% block content %}
-
+<div class="stocks mainpage"> 
+    <table class="table">
+        <thead class="thead-stocks">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Актуальная стоимость</th>
+          </tr>
+        </thead>
+        <tbody id = 'maintable'>
+            
+        </tbody>
+      </table>
+</div>
+</div>
+<script> 
+    async function drawTable(url){
+        var data = fetch(url).then(function(response) {
+            return response.json();
+            }).then(function(data) {
+            console.log(data);
+            }).catch(function() {
+            console.log("Booo");
+            });
+        var obj = JSON.parse(json);
+        console.log(stringify(data))
+        var table - document.getElementById('maintable');
+        table.innerHTML = '';
+        for (var i = 0; i < obj.length; i++) {
+            table.innerHTML += '<tr> <th scope="row">' + i.toString() + '</th>';
+            table.innerHTML += '<td>' + obj[i].toString() + '</td> </tr>';
+        }
+    }
+    drawTable({{url}});
+</script>
 {% endblock content %}
