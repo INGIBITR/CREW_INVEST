@@ -17,31 +17,31 @@
         </tbody>
       </table>
       <input type="hidden" id="myVar" name="variable" value="{{ url }}">
+      <input type="hidden" id="myVar2" name="variable" value="{{ key }}">
 </div>
 </div>
 <script> 
-    async function drawTable(url){
-        var data = fetch(url).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
-
-            var table = document.getElementById('maintable');
-            var k = 1;
-            table.innerHTML = '';
-            for (var i = 0; i < data.length; i++) {
-                table.innerHTML += '<tr> <th scope="row">' + k + '</th>' + '<td>' + data[i]['symbol'] + '</td>' + '<td>' + data[i]['lastSalePrice'] + '</td> </tr>';
-                k++;
-            }
-            
-        }).catch(function() {
-            console.log("Error");
-        });
+    async function drawTable(url, key){
+        var names = ['AAPL', 'IBM', 'FB', 'MSFT', 'AMZN', 'NVDA', 'PEP', 'CSCO', 'INTC', 'AMD', 'TXN', 'NLFX', 'PYPL', 'HD', 'V', 'MA', 'PFE', 'KO']
+        var table = document.getElementById('maintable');
+        table.innerHTML = '';
+    
+        for (var i=0; i < names.length; i++) {
+            console.log(url+ names[i]+ key)
+            var data = fetch(url+ names[i]+ key).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                table.innerHTML += '<tr> <th scope="row">'  + '</th>' + "<td> <a href='/stockpage/"+ data[0]['symbol'] +"'>" + data[0]['symbol'] + '</td>' + '<td>' + data[0]['price'] + '</td> </tr>';
+            }).catch(function() {
+                console.log("Error");
+            });
+        }
     }
     var url = document.getElementById("myVar").value;
-    drawTable(url);
+    var key = document.getElementById("myVar2").value;
+    drawTable(url, key);
     setTimeout(function () {
-        drawTable(url)
+        drawTable(url, key)
         }, 180000);
 </script>
 {% endblock content %}

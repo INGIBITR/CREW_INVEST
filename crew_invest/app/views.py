@@ -13,9 +13,9 @@ def profile(request):
     return render(request, 'profile.html', {'stocks': stocks})
 
 def main(request):
-
-    url = 'https://cloud.iexapis.com/stable/tops?token=sk_4d09ca49f6414e649ec494e14f079795&symbols=aapl,fb'
-    return render(request, 'main.html', {'url': url})
+    key = '?apikey=4231299af4e6b69b7401daf97277debb'
+    url = 'https://financialmodelingprep.com/api/v3/quote-short/'
+    return render(request, 'main.html', {'url': url, 'key': key})
 
 #@login_required
 def payment(request):
