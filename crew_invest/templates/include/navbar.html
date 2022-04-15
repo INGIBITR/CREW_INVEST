@@ -10,17 +10,17 @@
       <div class = "nav-img"><img src="{{ request.user.profile.avatar.url }}"></div>
       <div class="pf-name">{{ request.user.first_name }} {{ request.user.last_name }}</div>
       <div class="link-2">
-        <a href="">Личный кабинет</a>
+        <a href="/profile">Личный кабинет</a>
       </div>
       <div class="link-2">
-        <a href="">Выйти</a>
+        <a href="/logout_view">Выйти</a>
       </div>
       {% else %}
       <div class="link-1">
-        <a href="">Регистрация</a>
+        <a href="/signup">Регистрация</a>
       </div>
       <div class="link-2">
-        <a href="">Войти</a>
+        <a href="/login">Войти</a>
       </div>
       {% endif %}
     </div>
