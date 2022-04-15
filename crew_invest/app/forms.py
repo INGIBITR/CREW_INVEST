@@ -1,6 +1,9 @@
 from django import forms
 from .models import *
 from datetime import datetime
+from django.forms import PasswordInput
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class PaymentForm(forms.Form):
@@ -52,3 +55,54 @@ class PaymentForm(forms.Form):
 
         self._errors["card_number"] = ["Invalid card number"]
         return form_data
+
+class UserFormCustom(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['username', 'password']
+        widgets = {
+            'password': PasswordInput
+        }
+
+        
+class UserRegistration(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserRegistration, self).__init__(*args, **kwargs)
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+        self.fields['username'].help_text = None
+    class Meta:
+        model=User
+        fields=['email','username','password1','password2',]
+        widgets = {
+        'email': forms.EmailInput(attrs={'class': 'email-field'}),
+        'username': forms.TextInput(attrs={'class': 'username-field'}),
+
+        'password2': forms.PasswordInput(attrs={'class': 'password-field'})
+        }
+        help_text = {
+            'password': '',
+            'username': None,
+            'email': None,
+        }
+          
+class UserEdit(forms.ModelForm):
+    avatar_field=forms.ImageField(required=False)
+    def __init__(self, *args, **kwargs):
+        super(UserEdit, self).__init__(*args, **kwargs)
+        self.fields['email'].help_text = None
+        self.fields['username'].help_text = None
+    class Meta:
+        model=User
+        
+        fields= ['email','username','first_name','last_name',]
+        help_text = {
+            'password': '',
+            'username': None,
+            'email': None,
+            
+        }
+        error_messages = {
+            'email': None,
+        }
+        

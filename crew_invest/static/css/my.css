@@ -34,6 +34,46 @@ main {
     margin-left: auto;
 }
 
+
+.email-field{
+    
+    font-size: 1rem;
+}
+.form-header {
+ color:#5d2e46;
+    padding-bottom:20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin:auto;
+    align-self: center;
+
+}
+.form-button {
+background-color: #7d7ad0;
+ color: #5d2e46;
+ 
+}
+.form {
+width:max-content;
+    background-color: #B7B5E4;
+    margin:5% auto 0;
+    
+    padding-top: 30px;
+    padding-bottom: 2%;
+    padding-right: 4%;
+    padding-left: 4%;
+    border-radius: 10px;
+    color: #5d2e46;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    }
+.wrapper {
+display:flex;
+flex-direction:column;
+}
+
 .nav-img > img{
     width: 52px;
     height: 52px;

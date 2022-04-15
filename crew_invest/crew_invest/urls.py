@@ -26,8 +26,12 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('payment/', views.payment, name='payment'),
     path('pay/', views.pay, name='pay'),
-
-    path('', views.main, name='main')
+    
+    path('login/',views.auth_login, name='auth_login'),
+    path('signup/',views.signup, name='signup'),
+    path('logout_view/',views.logout_view, name='logout_view'),
+    path('profile/edit/',views.edit,name='edit'),
+    path('', views.main, name='main'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

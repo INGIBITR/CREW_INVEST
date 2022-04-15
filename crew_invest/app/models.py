@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.FloatField(default=0)
-    avatar = models.ImageField()
+    avatar = models.ImageField(upload_to='images/', blank=True,default='-1.jpeg')
 
 
 class Stock(models.Model):
