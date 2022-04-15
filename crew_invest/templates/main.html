@@ -27,16 +27,21 @@
             console.log(data);
 
             var table = document.getElementById('maintable');
+            var k = 1;
+            table.innerHTML = '';
             for (var i = 0; i < data.length; i++) {
-                table.innerHTML += '<tr> <th scope="row">' + i + '</th>';
-                table.innerHTML += '<td>' + data[i]['lastSalePrice'] + '</td> </tr>';
+                table.innerHTML += '<tr> <th scope="row">' + k + '</th>' + '<td>' + data[i]['symbol'] + '</td>' + '<td>' + data[i]['lastSalePrice'] + '</td> </tr>';
+                k++;
             }
-    
+            
         }).catch(function() {
             console.log("Error");
         });
     }
     var url = document.getElementById("myVar").value;
     drawTable(url);
+    setTimeout(function () {
+        drawTable(url)
+        }, 180000);
 </script>
 {% endblock content %}
