@@ -33,6 +33,8 @@ urlpatterns = [
     path('profile/edit/',views.edit,name='edit'),
     path('', views.main, name='main'),
     path('stockpage/<str>/', views.stockpage, name='stockpage'),
+    path('stockpage/<str>/submit', views.stockpage, name='stockpage'),
+    path('', views.main, name='main')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

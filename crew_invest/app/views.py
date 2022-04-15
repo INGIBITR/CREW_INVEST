@@ -135,6 +135,7 @@ def priceoutput(ticker):
 def outputFig(ticker):
 
     df = priceoutput(ticker)
+    lastprice = df
     df1 = [0] * len(df)
     j = 0
     for i in df:
@@ -148,7 +149,8 @@ def outputFig(ticker):
     df1 = pd.DataFrame(df1)
     #f2 = [time['t']/1000 for time in df1]
     df = pd.DataFrame(df)
-
+    lastprice = lastprice[-1]
+    lastprice = lastprice['c']
     fig = go.Figure(data=[go.Candlestick(x=df2,
                     open=(df['o']),
                     high=(df['h']),
@@ -158,17 +160,16 @@ def outputFig(ticker):
     fig.update_layout(
         title='Stock graph',
         yaxis_title='{} Stock'.format(ticker),
-
-
     )
-    return fig
+
+    return fig, lastprice
 
 
 def stockpage(request, str):
    # request.user = User.objects.get(pk=2)
     #request.stockpage = StockPage.objects.get(ticker=request)
     app = Dash(__name__)
-    fig = outputFig(str)
+    fig, lastprice = outputFig(str)
 
 
     output = html.Div(children=[
@@ -180,11 +181,37 @@ def stockpage(request, str):
 
     dcc.Graph(
         id='example-graph',
-        figure=fig
-    )
-])
-    output = plot.to_html(fig, include_plotlyjs = True, full_html = False)
-  
-    return render(request, 'stockpage.html', {'chart': output  })
-
-   
+        figure=fig)])
+    output = plot.to_html(fig, include_plotlyjs=True, full_html=True)
+   # output = go.layout()
+    request.user = User.objects.get(pk=2)
+    if request.method == 'GET':
+        return render(request, 'stockpage.html', {'chart': output, 'lastprice': lastprice})
+    form = PurchaseForm(request.POST)
+    if form.is_valid():
+        profile = request.user.profile
+        stock = Stock()
+        if profile.balance < (form.cleaned_data['stock_quantity'] * lastprice):
+            form.errors["stock_quantity"] = ""
+            print(form.errors)
+            return render(request, 'stockpage.html', {'form': form, 'chart': output, 'lastprice': lastprice})
+        else:
+            profile.balance -= form.cleaned_data['stock_quantity'] * lastprice
+            stock.owner = request.user.profile
+            stockToFind = Stock.objects.filter(name=str, owner_id = profile.id).first()
+            if stockToFind:
+                stockToFind.amount += form.cleaned_data['stock_quantity']
+                stockToFind.save()
+            else:
+                stock.name = str
+                stock.price = lastprice
+                stock.amount += form.cleaned_data['stock_quantity']
+                stock.save()
+            profile.save()
+            
+            return redirect('profile')
+    else:
+        print(form.errors)
+        return render(request, 'stockpage.html', {'form': form, 'chart': output, 'lastprice': lastprice})
+    
+    
