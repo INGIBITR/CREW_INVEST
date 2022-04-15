@@ -14,5 +14,20 @@
     }, 180000);
 
 </script>
+<div><label for="lastprice">Последняя цена продажи: </label>{{lastprice}} </div>
+<form class="/purchase/"  method="POST" action="submit"  target="_self">
+    {% csrf_token %}
+     {% if form.errors %}
+        <div class="error">
+            Указано неверное количество; или на балансе недостаточно средств
+        </div>
+        {% endif %}
+<fieldset>
+  <legend> Покупка </legend>
+    <label for="stock_quantity">Количество:</label><br>
+   <input type="number" name="stock_quantity" id="stock_quantity" class="form-control {% if form.errors.stock_quantity %} is-invalid {% endif %}" placeholder = "Please enter a number" name="number"><br>
+   <input type="submit" value="Купить"><br><br>
+</fieldset>
+</form>
 {% endblock content %}
 

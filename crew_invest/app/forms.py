@@ -54,3 +54,17 @@ class PaymentForm(forms.Form):
 
         self._errors["card_number"] = ["Invalid card number"]
         return form_data
+
+
+
+class PurchaseForm(forms.Form):
+    stock_quantity = forms.IntegerField()
+
+    def clean(self):
+        form_data = self.cleaned_data
+
+        if 'stock_quantity' not in form_data or form_data['stock_quantity'] <= 0:
+            self._errors["stock_quantity"] = ["Некорректное количество"]
+            return form_data
+
+        return form_data

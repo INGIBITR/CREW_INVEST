@@ -27,7 +27,7 @@ urlpatterns = [
     path('payment/', views.payment, name='payment'),
     path('pay/', views.pay, name='pay'),
     path('stockpage/<str>/', views.stockpage, name='stockpage'),
-
+    path('stockpage/<str>/submit', views.stockpage, name='stockpage'),
     path('', views.main, name='main')
 ]
 
