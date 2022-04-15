@@ -16,26 +16,27 @@
             
         </tbody>
       </table>
+      <input type="hidden" id="myVar" name="variable" value="{{ url }}">
 </div>
 </div>
 <script> 
     async function drawTable(url){
         var data = fetch(url).then(function(response) {
             return response.json();
-            }).then(function(data) {
+        }).then(function(data) {
             console.log(data);
-            }).catch(function() {
-            console.log("Booo");
-            });
-        var obj = JSON.parse(json);
-        console.log(stringify(data))
-        var table - document.getElementById('maintable');
-        table.innerHTML = '';
-        for (var i = 0; i < obj.length; i++) {
-            table.innerHTML += '<tr> <th scope="row">' + i.toString() + '</th>';
-            table.innerHTML += '<td>' + obj[i].toString() + '</td> </tr>';
-        }
+
+            var table = document.getElementById('maintable');
+            for (var i = 0; i < data.length; i++) {
+                table.innerHTML += '<tr> <th scope="row">' + i + '</th>';
+                table.innerHTML += '<td>' + data[i]['lastSalePrice'] + '</td> </tr>';
+            }
+    
+        }).catch(function() {
+            console.log("Error");
+        });
     }
-    drawTable({{url}});
+    var url = document.getElementById("myVar").value;
+    drawTable(url);
 </script>
 {% endblock content %}
